@@ -19,7 +19,7 @@ import smbus, time
 import DomoticzEx as Domoticz
 
 
-class Ath10Device:
+class Aht10Device:
     I2CAddress = ""
 
     def __init__(self, bus, i2CAddress):
@@ -67,7 +67,9 @@ class BasePlugin:
 
     def onHeartbeat(self):
         Domoticz.Log("onHeartbeat called")
-
+        m = Aht10Device()
+        data = m.getData()
+        Domoticz.Log("data:" + data)
 
 global _plugin
 _plugin = BasePlugin()
