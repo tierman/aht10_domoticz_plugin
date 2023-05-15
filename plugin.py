@@ -16,7 +16,7 @@
 """
 
 import smbus, time
-import Domoticz
+import DomoticzEx as Domoticz
 
 
 class Ath10Device:
