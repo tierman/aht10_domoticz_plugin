@@ -10,7 +10,7 @@
         Specify i2c address of device.<br/>
     </description>
     <params>
-        <param field="I2CAddress" label="I2C Address" width="300px" required="true" default="0x38"/>
+        <param field="Address" label="I2C Address" width="300px" required="true" default="0x38"/>
     </params>
 </plugin>
 """
@@ -48,7 +48,7 @@ class BasePlugin:
 
     def onStart(self):
         # Find devices that already exist, create those that don't
-        self.i2cAddress = Parameters["I2CAddress"].replace(" ", "").split(",")
+        self.i2cAddress = Parameters["Address"].replace(" ", "").split(",")
         destination = "ATH10:"+self.i2cAddress
 
         Domoticz.Log("Endpoint '" + destination + "' found.")
