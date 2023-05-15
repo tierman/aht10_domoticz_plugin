@@ -20,7 +20,8 @@ import DomoticzEx as Domoticz
 
 
 class Aht10Device:
-    I2CAddress = ""
+    CONFIG = [0x08, 0x00]
+    MEASURE = [0x33, 0x00]
 
     def __init__(self, bus, i2CAddress):
         self.bus = smbus.SMBus(bus)
