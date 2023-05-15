@@ -51,7 +51,7 @@ class BasePlugin:
         self.i2cAddress = Parameters["I2CAddress"].replace(" ", "").split(",")
         destination = "ATH10:"+self.i2cAddress
 
-        Domoticz.Debug("Endpoint '" + destination + "' found.")
+        Domoticz.Log("Endpoint '" + destination + "' found.")
         deviceFound = False
         for Device in Devices:
             if (("Name" in Devices[Device].Options) and (
