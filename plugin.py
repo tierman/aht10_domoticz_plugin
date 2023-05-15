@@ -48,7 +48,7 @@ class BasePlugin:
 
     def onStart(self):
         # Find devices that already exist, create those that don't
-        self.i2cAddress = Parameters["Address"].replace(" ", "").split(",")
+        self.i2cAddress = int(Parameters["Address"])
         destination = "ATH10:"+self.i2cAddress
 
         Domoticz.Log("Endpoint '" + destination + "' found.")
