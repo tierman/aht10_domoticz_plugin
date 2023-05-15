@@ -48,7 +48,7 @@ class BasePlugin:
 
     def onStart(self):
         # Find devices that already exist, create those that don't
-        self.i2cAddress = int(Parameters["Address"])
+        self.i2cAddress = hex(Parameters["Address"])
         destination = "ATH10:"+self.i2cAddress
 
         Domoticz.Log("Endpoint '" + destination + "' found.")
@@ -68,7 +68,7 @@ class BasePlugin:
 
     def onHeartbeat(self):
         Domoticz.Log("onHeartbeat called")
-        m = Aht10Device(1, int(self.i2cAddress))
+        m = Aht10Device(1, hex(self.i2cAddress))
         data = m.getData()
         Domoticz.Log("data:" + data)
 
