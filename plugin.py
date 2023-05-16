@@ -51,7 +51,7 @@ class BasePlugin:
         Domoticz.Log("Address: " + Parameters["Address"])
         # Find devices that already exist, create those that don't
         self.i2cAddress = 0x38 # //hex(literal_eval(Parameters["Address"]))
-        destination = "ATH10:"+self.i2cAddress
+        destination = "ATH10:" + str(self.i2cAddress)
 
         Domoticz.Log("Endpoint '" + destination + "' found.")
         deviceFound = False
