@@ -16,6 +16,7 @@
 """
 
 import smbus, time
+from ast import literal_eval
 import DomoticzEx as Domoticz
 
 
@@ -48,7 +49,7 @@ class BasePlugin:
 
     def onStart(self):
         # Find devices that already exist, create those that don't
-        self.i2cAddress = hex(Parameters["Address"])
+        self.i2cAddress = hex(literal_eval(Parameters["Address"]))
         destination = "ATH10:"+self.i2cAddress
 
         Domoticz.Log("Endpoint '" + destination + "' found.")
