@@ -48,6 +48,7 @@ class BasePlugin:
     i2cAddress = None
 
     def onStart(self):
+        Domoticz.Log("Address: " + Parameters["Address"])
         # Find devices that already exist, create those that don't
         self.i2cAddress = hex(literal_eval(Parameters["Address"]))
         destination = "ATH10:"+self.i2cAddress
