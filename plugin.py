@@ -51,7 +51,7 @@ class BasePlugin:
         Domoticz.Log("Address: " + Parameters["Address"])
         # Find devices that already exist, create those that don't
         self.i2cAddress = 0x38 # //hex(literal_eval(Parameters["Address"]))
-        destination = "ATH10:" + hex(self.i2cAddress)
+        destination = str("ATH10: " + hex(self.i2cAddress))
 
         Domoticz.Log("Endpoint '" + destination + "' found.")
         deviceFound = False
@@ -59,7 +59,7 @@ class BasePlugin:
             if (("Name" in Devices[Device].Options) and (
                     Devices[Device].Options["Name"] == destination)): deviceFound = True
         if (deviceFound == False):
-            Domoticz.Device(Name=destination, Unit=len(Devices) + 1, Type=82, Subtype=1).Create()
+            Domoticz.Device(Name=destination, Unit=len(Devices) + 1, TypeName="Temp+Hum").Create()
 
     def onConnect(self, Connection, Status, Description):
         Domoticz.Log("onConnect called")
