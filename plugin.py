@@ -72,7 +72,7 @@ class BasePlugin:
         Domoticz.Log("onHeartbeat called, with address: " + str(self.i2cAddress))
         m = Aht10Device(1, self.i2cAddress)
         data = m.getData()
-        Domoticz.Log("data:" + data)
+        Domoticz.Log("data:" + str(data))
 
 global _plugin
 _plugin = BasePlugin()
