@@ -69,8 +69,8 @@ class BasePlugin:
         Domoticz.Log("onMessage called")
 
     def onHeartbeat(self):
-        Domoticz.Log("onHeartbeat called")
-        m = Aht10Device(1, hex(self.i2cAddress))
+        Domoticz.Log("onHeartbeat called, with address: " + str(self.i2cAddress))
+        m = Aht10Device(1, self.i2cAddress)
         data = m.getData()
         Domoticz.Log("data:" + data)
 
