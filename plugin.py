@@ -15,9 +15,7 @@
 </plugin>
 """
 
-import smbus, time
-from ast import literal_eval
-import DomoticzEx as Domoticz
+import smbus, time, Domoticz
 
 
 class Aht10Device:
