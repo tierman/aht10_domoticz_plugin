@@ -39,7 +39,7 @@ class Aht10Device:
         ctemp = ((temp * 200) / 1048576) - 50
         hum = ((data[1] << 16) | (data[2] << 8) | data[3]) >> 4
         chum = int(hum * 100 / 1048576)
-        return round(ctemp, 2), chum
+        return round(ctemp, 1), chum
 
 
 class BasePlugin:
