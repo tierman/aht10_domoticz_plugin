@@ -69,11 +69,12 @@ class BasePlugin:
         Domoticz.Log("onHeartbeat called, with address: " + hex(self.i2cAddress))
         m = Aht10Device(1, self.i2cAddress)
         data = m.getData()
-        Domoticz.Log("data:" + str(data[0]) + str(data[1]))
+        destination = str("ATH10: " + hex(self.i2cAddress))
+
         for Device in Devices:
             if (("Name" in Devices[Device].Options) and (Devices[Device].Options["Name"] == destination)):
                 Devices[Device].Update(1, str(data[0]/10) + ';' + str(data[1]))
-                Domoticz.Log("update device:" + str(data))
+                Domoticz.Log("update device:" + str(data[0]/10) + ';' + str(data[1]))
 
 global _plugin
 _plugin = BasePlugin()
