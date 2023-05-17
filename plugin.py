@@ -57,7 +57,7 @@ class BasePlugin:
             if (("Name" in Devices[Device].Options) and (
                     Devices[Device].Options["Name"] == destination)): deviceFound = True
         if (deviceFound == False):
-            Domoticz.Device(Name="ATH10", Unit=16, TypeName="Temp+Hum").Create()
+            Domoticz.Device(Name=destination, Unit=16, TypeName="Temp+Hum").Create()
 
     def onConnect(self, Connection, Status, Description):
         Domoticz.Log("onConnect called")
@@ -66,10 +66,13 @@ class BasePlugin:
         Domoticz.Log("onMessage called")
 
     def onHeartbeat(self):
-        Domoticz.Log("onHeartbeat called, with address: " + str(self.i2cAddress))
+        Domoticz.Log("onHeartbeat called, with address: " + hex(self.i2cAddress))
         m = Aht10Device(1, self.i2cAddress)
         data = m.getData()
         Domoticz.Log("data:" + str(data))
+        for Device in Devices:
+            if (("Name" in Devices[Device].Options) and (Devices[Device].Options["Name"] == destination)):
+                Devices[Device].Update(1,"10")
 
 global _plugin
 _plugin = BasePlugin()
