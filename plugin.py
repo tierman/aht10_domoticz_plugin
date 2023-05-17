@@ -72,7 +72,6 @@ class BasePlugin:
         destination = str("ATH10: " + hex(self.i2cAddress))
 
         for Device in Devices:
-            Domoticz.Log("Destination: " + destination + "; name: " + Device.Name)
             if (("Name" in Devices[Device].Options) and (Devices[Device].Options["Name"] == destination)):
                 Devices[Device].Update(1, str(data[0]/10) + ';' + str(data[1]))
                 Domoticz.Log("update device:" + str(data[0]/10) + ';' + str(data[1]))
