@@ -74,7 +74,7 @@ class BasePlugin:
         for Device in Devices:
             if (("Name" in Devices[Device].Options) and (Devices[Device].Options["Name"] == destination)):
                 Devices[Device].Update(1, str(data[0]) + ';' + str(data[1]))
-                Domoticz.Log("update device:" + str(data[0]) + ';' + str(data[1]))
+                Domoticz.Log("update device:" + str(data[0]) + ';' + str(data[1] + ';0'))
 
 global _plugin
 _plugin = BasePlugin()
